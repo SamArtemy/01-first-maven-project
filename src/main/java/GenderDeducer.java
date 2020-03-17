@@ -1,10 +1,10 @@
 
 public class GenderDeducer {
 
-    public String setGender(String name) {
+    public String sexDetermination(String name) {
         String girl = "girl";
         String boy = "boy";
-        if (name.endsWith("а")) {
+        if (name.endsWith("a")) {
             return girl;
         } else return boy;
     }

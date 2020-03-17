@@ -6,13 +6,13 @@ public class GenderDeducerTest {
 
 
     @Test
-    public void setGenderMethodStringTest() {
+    public void testSexDetermination() {
         GenderDeducer genderDeducer = new GenderDeducer();
 
-        String res1 = genderDeducer.setGender("Дмитрий");
+        String res1 = genderDeducer.sexDetermination("Alexander");
         assertEquals("boy", res1);
 
-        String res2 = genderDeducer.setGender("Татьяна");
+        String res2 = genderDeducer.sexDetermination("Marina");
         assertEquals("girl", res2);
     }
 }
