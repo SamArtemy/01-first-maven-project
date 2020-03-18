@@ -7,7 +7,7 @@ public class App {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter a name");
         String name = in.next();
-        System.out.println("You're my first " + genderDeducer.sexDetermination(name) + "friend!");
+        System.out.println("You're my first " + genderDeducer.deduceGender(name) + "friend!");
 
 
     }
