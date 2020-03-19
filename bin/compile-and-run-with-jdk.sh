@@ -1,3 +1,3 @@
 #!/bin/bash
-javac -d bin src/main/java/*.java
-java -classpath ./bin App
+javac -d target/classes src/main/java/*.java
+java -classpath ./target/classes App
