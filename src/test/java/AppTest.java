@@ -14,6 +14,6 @@ public class AppTest extends App{
         System.setOut(new PrintStream(os));
         App.main(null);
         os.toString();
-        Assert.assertEquals(os.toString(), "You're my first boyfriend!\n");
+        Assert.assertEquals(os.toString(), "You're my first boyfriend!");
     }
 }
