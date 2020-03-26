@@ -2,9 +2,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.*;
-import java.util.List;
 
-public class AppTest extends App{
+public class AppTest extends App {
 
     @Test
     public void testMain() throws IllegalArgumentException {
