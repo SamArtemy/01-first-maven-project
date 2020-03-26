@@ -13,7 +13,6 @@ public class AppTest extends App{
         System.setIn(is);
         System.setOut(new PrintStream(os));
         App.main(null);
-        os.toString();
         Assert.assertEquals(os.toString(), "You're my first boyfriend!");
     }
 }
