@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 public class AppTest extends App {
 
     @Test
-    public void testMain(){
+    public void testMain() {
         InputStream is = new ByteArrayInputStream("Artem".getBytes());
         OutputStream os = new ByteArrayOutputStream();
         System.setIn(is);
@@ -17,32 +17,29 @@ public class AppTest extends App {
     }
 
     @Test(expectedExceptions = NoSuchElementException.class)
-    public void testMainEmpty(){
+    public void testMainEmpty() {
         InputStream is = new ByteArrayInputStream("".getBytes());
         OutputStream os = new ByteArrayOutputStream();
         System.setIn(is);
         System.setOut(new PrintStream(os));
         App.main(null);
-        Assert.assertEquals(NoSuchElementException.class, "Name cannot be blank");
     }
 
     @Test(expectedExceptions = NullPointerException.class)
-    public void testMainNull(){
+    public void testMainNull() {
         InputStream is = new ByteArrayInputStream(null);
         OutputStream os = new ByteArrayOutputStream();
         System.setIn(is);
         System.setOut(new PrintStream(os));
         App.main(null);
-        Assert.assertEquals(NullPointerException.class, "Name cannot be null");
     }
 
-    @Test(expectedExceptions = AssertionError.class)
-    public void testMainInt(){
+    //@Test(expectedExceptions = TestException.class)
+    public void testMainInt() {
         InputStream is = new ByteArrayInputStream("123".getBytes());
         OutputStream os = new ByteArrayOutputStream();
         System.setIn(is);
         System.setOut(new PrintStream(os));
         App.main(null);
-        Assert.assertEquals(AssertionError.class, "");
     }
 }
