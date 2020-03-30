@@ -1,7 +1,9 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.awt.print.Book;
 import java.io.*;
+import java.util.GregorianCalendar;
 import java.util.NoSuchElementException;
 
 public class AppTest extends App {
@@ -16,16 +18,17 @@ public class AppTest extends App {
         Assert.assertEquals(os.toString(), "Enter a name\nYou're my first boyfriend!");
     }
 
-    @Test(expectedExceptions = NoSuchElementException.class)
+    @Test(expectedExceptions = {NoSuchElementException.class})
     public void testMainEmpty() {
         InputStream is = new ByteArrayInputStream("".getBytes());
         OutputStream os = new ByteArrayOutputStream();
         System.setIn(is);
         System.setOut(new PrintStream(os));
         App.main(null);
+
     }
 
-    @Test(expectedExceptions = NullPointerException.class)
+    @Test(expectedExceptions = {NullPointerException.class})
     public void testMainNull() {
         InputStream is = new ByteArrayInputStream(null);
         OutputStream os = new ByteArrayOutputStream();
@@ -34,12 +37,16 @@ public class AppTest extends App {
         App.main(null);
     }
 
-    //@Test(expectedExceptions = TestException.class)
-    public void testMainInt() {
-        InputStream is = new ByteArrayInputStream("123".getBytes());
+    @Test()
+    public void testMainArray() {
+        byte[] array = new byte[]{1, 3, 5, 7};
+        InputStream is = new ByteArrayInputStream(array, 1, 1);
         OutputStream os = new ByteArrayOutputStream();
         System.setIn(is);
         System.setOut(new PrintStream(os));
         App.main(null);
+        Assert.assertEquals(os.toString(), "Enter a name\nYou're my first boyfriend!");
+
+
     }
 }
