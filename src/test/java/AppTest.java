@@ -1,4 +1,5 @@
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.*;
@@ -6,49 +7,44 @@ import java.util.NoSuchElementException;
 
 public class AppTest extends App {
 
-    @Test
-    public void testMain_ArtemInput() {
-        testMain("Artem", "Enter a name\nYou're my first boyfriend!", null);
+    @DataProvider
+    public static Object[][] charsAndSymbols() {
+        return new Object[][]{{"123"}, {"1.2.3"}, {"-15"}, {"0"}};
     }
 
-    @Test
-    public void testMain_MashaInput() {
-        testMain("Masha", "Enter a name\nYou're my first girlfriend!", null);
+    @DataProvider
+    public static Object[][] maleName() {
+        return new Object[][]{{"Artem"}, {"Mikhail"}};
     }
 
-    @Test
-    public void testMain_MikhailInput() {
-        testMain("Mikhail", "Enter a name\nYou're my first boyfriend!", null);
+    @DataProvider
+    public static Object[][] femaleName() {
+        return new Object[][]{{"Masha"}, {"Tatiana"}};
     }
 
-    @Test
-    public void testMain_TatianaInput() {
-        testMain("Tatiana", "Enter a name\nYou're my first girlfriend!", null);
+    @DataProvider
+    public static Object[][] emptySymbol() {
+        return new Object[][]{{""}};
     }
 
-    @Test
-    public void testMain_123Input() {
-        testMain("123", "Enter a name\nYou're my first boyfriend!", null);
+    @Test(dataProvider = "maleName")
+    public void testMain_maleNameInput(String expectedText) {
+        testMain(expectedText, "Enter a name\nYou're my first boyfriend!", null);
     }
 
-    @Test
-    public void testMain_1dot2dot3Input() {
-        testMain("1.2.3", "Enter a name\nYou're my first boyfriend!", null);
+    @Test(dataProvider = "femaleName")
+    public void testMain_femaleNameInput(String expectedText) {
+        testMain(expectedText, "Enter a name\nYou're my first girlfriend!", null);
     }
 
-    @Test
-    public void testMain_negative15Input() {
-        testMain("-15", "Enter a name\nYou're my first boyfriend!", null);
+    @Test(dataProvider = "charsAndSymbols")
+    public void testMain_charsAndSymbolsInput(String expectedText) {
+        testMain(expectedText, "Enter a name\nYou're my first boyfriend!", null);
     }
 
-    @Test
-    public void testMain_ZeroInput() {
-        testMain("0", "Enter a name\nYou're my first boyfriend!", null);
-    }
-    
-    @Test
-    public void testMain_EmptyInput() {
-        testMain("", null, NoSuchElementException.class);
+    @Test(dataProvider = "emptySymbol")
+    public void testMain_EmptyInput(String expectedText) {
+        testMain(expectedText, null, NoSuchElementException.class);
     }
 
     private void testMain(String input, String expectedOutput, Class<? extends Exception> expectedException) {
