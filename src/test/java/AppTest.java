@@ -9,42 +9,26 @@ public class AppTest extends App {
 
     @DataProvider
     public static Object[][] charsAndSymbols() {
-        return new Object[][]{{"123"}, {"1.2.3"}, {"-15"}, {"0"}};
-    }
-
-    @DataProvider
-    public static Object[][] maleName() {
-        return new Object[][]{{"Artem"}, {"Mikhail"}};
-    }
-
-    @DataProvider
-    public static Object[][] femaleName() {
-        return new Object[][]{{"Masha"}, {"Tatiana"}};
+        return new Object[][]{{"123", "Enter a name\nYou're my first boyfriend!"},
+                {"1.2.3","Enter a name\nYou're my first boyfriend!"}, {"-15","Enter a name\nYou're my first boyfriend!"},
+                {"0", "Enter a name\nYou're my first boyfriend!"},{"Artem","Enter a name\nYou're my first boyfriend!"},
+                {"Mikhail","Enter a name\nYou're my first boyfriend!"},{"Masha", "Enter a name\nYou're my first girlfriend!"},
+                {"Tatiana", "Enter a name\nYou're my first girlfriend!"}};
     }
 
     @DataProvider
     public static Object[][] emptySymbol() {
-        return new Object[][]{{""}};
+        return new Object[][]{{"", null}};
     }
-
-    @Test(dataProvider = "maleName")
-    public void testMain_maleNameInput(String expectedText) {
-        testMain(expectedText, "Enter a name\nYou're my first boyfriend!", null);
-    }
-
-    @Test(dataProvider = "femaleName")
-    public void testMain_femaleNameInput(String expectedText) {
-        testMain(expectedText, "Enter a name\nYou're my first girlfriend!", null);
-    }
-
+    
     @Test(dataProvider = "charsAndSymbols")
-    public void testMain_charsAndSymbolsInput(String expectedText) {
-        testMain(expectedText, "Enter a name\nYou're my first boyfriend!", null);
+    public void testMain_charsAndSymbolsInput(String expectedText, String expectedOutput) {
+        testMain(expectedText, expectedOutput, null);
     }
 
     @Test(dataProvider = "emptySymbol")
-    public void testMain_EmptyInput(String expectedText) {
-        testMain(expectedText, null, NoSuchElementException.class);
+    public void testMain_EmptyInput(String expectedText, String expectedOutput) {
+        testMain(expectedText, expectedOutput, NoSuchElementException.class);
     }
 
     private void testMain(String input, String expectedOutput, Class<? extends Exception> expectedException) {
