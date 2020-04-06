@@ -22,17 +22,17 @@ public class AppTest extends App {
 
     @DataProvider
     public static Object[][] emptySymbol() {
-        return new Object[][]{{"", null}};
+        return new Object[][]{{""}};
     }
 
     @Test(dataProvider = "charsAndSymbols")
-    public void testMain_charsAndSymbolsInput(String expectedText, String expectedOutput) {
-        testMain(expectedText, expectedOutput);
+    public void testMain_charsAndSymbolsInput(String inputText, String expectedOutput) {
+        testMain(inputText, expectedOutput);
     }
 
     @Test(dataProvider = "emptySymbol")
-    public void testMain_EmptyInput(String expectedText) {
-        testMain(expectedText, NoSuchElementException.class);
+    public void testMain_EmptyInput(String inputText) {
+        testMain(inputText, NoSuchElementException.class);
     }
 
     private void testMain(String input, Class<? extends Exception> expectedException) {
@@ -50,6 +50,6 @@ public class AppTest extends App {
         System.setOut(new PrintStream(os));
         App.main(null);
         Assert.assertEquals(os.toString(), expectedOutput);
-        }
+    }
 
 }
