@@ -8,11 +8,11 @@ public class AppBulk {
         GenderDeducer genderDeducer = new GenderDeducer();
         List<String> names = new ArrayList<String>();
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter a names");
+        System.out.println("Enter the names");
         try {
             String name;
-            while ((name = in.nextLine()) != "stop") {
-                if (name.equals("stop")) {
+            while ((name = in.nextLine()) != "") {
+                if (name.equals("")) {
                     for (String i : names) {
                         System.out.println(i + " is a " + genderDeducer.deduceGender(i));
                     }
@@ -25,8 +25,6 @@ public class AppBulk {
         } catch (IllegalArgumentException e) {
             System.err.print(e.getMessage());
             System.err.print("Exception was processed. Program continues");
-
-
         }
     }
 }
