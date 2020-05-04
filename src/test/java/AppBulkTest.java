@@ -10,14 +10,16 @@ public class AppBulkTest extends AppBulk {
     @DataProvider
     public static Object[][] charsAndSymbols() {
         return new Object[][]{
-                {"123\n\n", "Enter the names\n123 is a boy\n"},
-                {"1.2.3\n\n", "Enter the names\n1.2.3 is a boy\n"},
-                {"-15\n\n", "Enter the names\n-15 is a boy\n"},
-                {"0\n\n", "Enter the names\n0 is a boy\n"},
-                {"Artem\n\n", "Enter the names\nArtem is a boy\n"},
-                {"Mikhail\n\n", "Enter the names\nMikhail is a boy\n"},
-                {"Masha\n\n", "Enter the names\nMasha is a girl\n"},
-                {"Tatiana\n\n", "Enter the names\nTatiana is a girl\n"}};
+                {"123\n1.2.3\n-15\n0\nArtem\nMikhail\nMasha\nTatiana\n\n",
+                        "Enter the names\n" +
+                                "123 is a boy\n" +
+                                "1.2.3 is a boy\n" +
+                                "-15 is a boy\n" +
+                                "0 is a boy\n" +
+                                "Artem is a boy\n" +
+                                "Mikhail is a boy\n" +
+                                "Masha is a girl\n" +
+                                "Tatiana is a girl\n"}};
     }
 
     @DataProvider
