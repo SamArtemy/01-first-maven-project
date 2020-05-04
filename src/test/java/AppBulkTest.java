@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import java.io.*;
 import java.util.NoSuchElementException;
 
-public class AppBulkTest extends AppBulk {
+public class AppBulkTest {
 
     @DataProvider
     public static Object[][] charsAndSymbols() {
